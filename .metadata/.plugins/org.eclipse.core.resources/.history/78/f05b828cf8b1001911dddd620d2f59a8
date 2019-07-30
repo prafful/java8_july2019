@@ -1,0 +1,58 @@
+package com.beginner.javaStreams;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class StreamBasics {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<Friend> friends = new ArrayList<Friend>();
+		friends.add(new Friend(1,  "Ola", 8));
+		friends.add(new Friend(2,  "BNP", 10));
+		friends.add(new Friend(3,  "Uko", 13));
+		friends.add(new Friend(4,  "Moka", 2));
+		friends.add(new Friend(5,  "Dino", 20));
+		friends.add(new Friend(6,  "Zuko", 1));
+		friends.add(new Friend(7,  "Xylo", 5));
+		friends.add(new Friend(8,  "Tere", 4));
+		System.out.println("------------legacy way---------------");
+		for(Friend f: friends ) {
+			if(f.getScore() > 10) {
+				System.out.println(f.getName());
+				;
+			}
+		}
+		
+		System.out.println("-----------Use Stream for filter------------");
+	    Stream<Friend> friendStream = friends
+					.stream()
+					.filter(f -> f.getScore()<10);
+					
+		friendStream.forEach(f -> System.out::println));			
+										
+//		System.out.println("-----------Filter and convert to list ------------");
+//	    List<String> friendList = friends
+//					.stream()
+//					.filter(f -> f.getScore()<10)
+//					.map(f -> f.getName())
+//					.collect(Collectors.toList());
+//					
+//		friendStream.forEach(f -> System.out.println(f.getName()));
+		
+		System.out.println("-----------use foreach directly on stream and filter ------------");
+		friends.stream().filter(f -> f.getScore()<10).limit(2).forEach(f -> System.out.println(f.getName()));
+
+		System.out.println("-----------using reducers------------");
+		Optional<Integer> sumScore = friends
+								.stream()
+								.map(f -> f.getScore())
+								.reduce(Integer::sum);
+		System.out.println(sumScore.get());
+	}
+
+}

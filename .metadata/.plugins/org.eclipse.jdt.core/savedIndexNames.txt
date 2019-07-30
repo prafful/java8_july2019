@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\praff\workspace_java8_july2019\.metadata\.plugins\org.eclipse.jdt.core
+566089287.index
+3553791456.index
+2800233807.index

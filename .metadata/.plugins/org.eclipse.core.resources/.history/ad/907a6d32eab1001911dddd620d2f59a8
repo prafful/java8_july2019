@@ -1,0 +1,26 @@
+package com.beginner.lambda;
+
+interface Welcome{
+	public String sayMessage(String message);
+}
+
+public class LambdaMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		Welcome w = (msg)->  msg;
+		
+
+		
+		System.out.println(w.sayMessage("Java 8"));
+		
+		
+	}
+
+	
+
+}
+
+
+
